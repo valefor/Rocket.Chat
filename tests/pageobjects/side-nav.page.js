@@ -48,8 +48,8 @@ class SideNav extends Page {
 
 	// Opens a channel via rooms list
 	openChannel(channelName) {
-		browser.waitForVisible(`.sidebar-item__name=${ channelName }`, 5000);
-		browser.click(`.sidebar-item__name=${ channelName }`);
+		browser.waitForVisible(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`, 5000);
+		browser.click(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`);
 		browser.waitForVisible('.rc-message-box__container textarea', 5000);
 		browser.waitForVisible('.rc-header', 5000);
 		browser.waitUntil(function() {
@@ -92,17 +92,17 @@ class SideNav extends Page {
 			this.spotlightSearch.waitForVisible(5000);
 			this.spotlightSearch.click();
 			this.spotlightSearch.setValue(channelName);
-			browser.waitForVisible(`.sidebar-item__name=${ channelName }`, 5000);
-			return browser.element(`.sidebar-item__name=${ channelName }`);
+			browser.waitForVisible(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`, 5000);
+			return browser.element(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`);
 		}
 	}
 
 	// Gets a channel from the rooms list
 	getChannelFromList(channelName, reverse) {
 		if (reverse == null) {
-			browser.waitForVisible(`.sidebar-item__name=${ channelName }`, 5000);
+			browser.waitForVisible(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`, 5000);
 		}
-		return browser.element(`.sidebar-item__name=${ channelName }`);
+		return browser.element(`.sidebar-item__name .sidebar-item__ellipsis=${ channelName }`);
 	}
 
 	createChannel(channelName, isPrivate, /*isReadOnly*/) {
